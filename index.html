@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ayili Shashikiran Goud | Computer Vision, ML Data &amp; GenAI</title>
+<title>Ayili Shashikiran Goud | Computer Vision, 3D Reconstruction &amp; GenAI</title>
+<meta name="description" content="ML Support Engineer at Track3D working on SAM2, YOLOv8, 3D reconstruction and dataset validation. Builds RAG and LLM apps with evaluation and reliability.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -36,8 +37,8 @@ header.top .bar{display:flex;justify-content:space-between;align-items:center;ga
 header.top nav{display:flex;gap:1.25rem;flex-wrap:wrap}
 header.top a{text-decoration:none;color:var(--muted)}
 header.top a:hover{color:var(--ink)}
-.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:2.5rem;align-items:center;padding:2.5rem 0 4rem}
-.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700;letter-spacing:-.03em;margin-bottom:1rem}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:2.5rem;align-items:center;padding:2.5rem 0 3rem}
+.hero h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:700;letter-spacing:-.03em;margin-bottom:1rem}
 .hero p{color:var(--muted);max-width:34rem;margin:0 0 1.5rem}
 .btns{display:flex;gap:.75rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:.7rem 1.25rem;border-radius:.6rem;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
@@ -47,11 +48,14 @@ figure{margin:0}
 .scene{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:1rem}
 .scene .mask{fill-opacity:.38;stroke-width:2;cursor:pointer;transition:fill-opacity .15s}
 .scene g:hover .mask,.scene g:focus-visible .mask{fill-opacity:.8}
-.scene .tag{opacity:0;transition:opacity .15s;font:600 13px Figtree,system-ui,sans-serif}
-.scene g:hover .tag,.scene g:focus-visible .tag{opacity:1}
-.scene .tagbg{opacity:0;transition:opacity .15s}
-.scene g:hover .tagbg,.scene g:focus-visible .tagbg{opacity:1}
+.scene .tag,.scene .tagbg{opacity:0;transition:opacity .15s}
+.scene .tag{font:600 13px Figtree,system-ui,sans-serif}
+.scene g:hover .tag,.scene g:focus-visible .tag,.scene g:hover .tagbg,.scene g:focus-visible .tagbg{opacity:1}
 figcaption{font-size:.9rem;color:var(--muted);margin-top:.6rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;padding:0 0 3rem}
+.stats div{border-left:4px solid var(--c);padding:.2rem 0 .2rem .9rem}
+.stats b{display:block;font:700 1.9rem/1.1 "Bricolage Grotesque",Figtree,sans-serif}
+.stats span{color:var(--muted);font-size:.95rem}
 section{padding:3.5rem 0;border-top:1px solid var(--line)}
 section h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.5rem}
 .about{max-width:42rem}
@@ -65,23 +69,46 @@ section h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-.0
 .work article{background:var(--surface);border:1px solid var(--line);border-radius:.8rem;padding:1.25rem;border-top:6px solid var(--c)}
 .work h3{font-size:1.2rem;margin-bottom:.5rem}
 .work p{margin:0;color:var(--muted);font-size:1rem}
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.25rem}
-.projects article{background:var(--surface);border:1px solid var(--line);border-radius:.8rem;padding:1.5rem;border-top:6px solid var(--c);display:flex;flex-direction:column}
-.projects article{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background-color .2s ease}
-.projects article:hover,.projects article:focus-within{transform:translateY(-6px);border-color:var(--c);background:color-mix(in srgb,var(--surface) 90%,var(--c));box-shadow:0 16px 32px -14px color-mix(in srgb,var(--c) 65%,transparent)}
-.projects h3{font-size:1.3rem;margin-bottom:.5rem}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(21rem,1fr));gap:1.5rem}
+.projects article{background:var(--surface);border:1px solid var(--line);border-radius:.8rem;padding:1.5rem;border-top:6px solid var(--c);display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background-color .25s ease}
+.projects article:hover,.projects article:focus-within{transform:translateY(-6px);border-color:var(--c);background:color-mix(in srgb,var(--surface) 92%,var(--c));box-shadow:0 18px 34px -14px color-mix(in srgb,var(--c) 65%,transparent)}
+.projects h3{font-size:1.3rem;margin-bottom:.4rem}
 .projects p{margin:0 0 1rem;color:var(--muted);font-size:1rem}
+.projects ul.pts{margin:0 0 1rem;padding-left:1.1rem;color:var(--muted);font-size:.98rem}
+.projects ul.pts li{margin-bottom:.35rem}
 .projects .tech{list-style:none;margin:0 0 1.25rem;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
-.projects .tech li{border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem;font-size:.875rem}
+.projects .tech li{border:1px solid var(--line);border-radius:999px;padding:.15rem .7rem;font-size:.875rem;transition:background-color .2s,color .2s,border-color .2s}
+.projects article:hover .tech li,.projects article:focus-within .tech li{border-color:var(--c)}
+.projects .tech li:hover{background:var(--c);color:var(--on-accent)}
 .projects .btns{margin-top:auto}
 .projects .btn{padding:.55rem 1rem;font-size:.95rem}
+.viz{background:var(--bg);border:1px solid var(--line);border-radius:.6rem;padding:.9rem 1rem;margin-bottom:1.1rem;min-height:9.5rem}
+.viz small{display:block;color:var(--muted);font-size:.82rem;margin-top:.5rem}
+.m{display:grid;grid-template-columns:8.2rem 1fr 3rem;align-items:center;gap:.6rem;font-size:.88rem;margin-bottom:.55rem}
+.m .bar{height:.7rem;background:var(--line);border-radius:99px;overflow:hidden}
+.m .bar i{display:block;height:100%;width:var(--from);background:var(--c);border-radius:99px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.m .num{position:relative;font-weight:600;text-align:right;height:1.2em}
+.m .num span{position:absolute;right:0;transition:opacity .3s}
+.m .num .to{opacity:0}
+.projects article:hover .m .bar i,.projects article:focus-within .m .bar i{width:var(--to)}
+.projects article:hover .m .num .from,.projects article:focus-within .m .num .from{opacity:0}
+.projects article:hover .m .num .to,.projects article:focus-within .m .num .to{opacity:1}
+.route{width:100%;height:auto;display:block}
+.route .path{fill:none;stroke:var(--c);stroke-width:3;stroke-linecap:round;stroke-dasharray:7 7;opacity:.35;transition:opacity .3s}
+.route .draw{fill:none;stroke:var(--c);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.6s ease-in-out}
+.route .pin{fill:var(--c);transform-box:fill-box;transform-origin:center;transform:scale(.55);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.route text{font:600 11px Figtree,system-ui,sans-serif;fill:var(--on-accent);text-anchor:middle;pointer-events:none}
+.route .rt{fill:var(--muted);font-weight:500;text-anchor:start}
+.projects article:hover .route .draw,.projects article:focus-within .route .draw{stroke-dashoffset:0}
+.projects article:hover .route .pin,.projects article:focus-within .route .pin{transform:scale(1)}
+.route .pin:nth-of-type(2){transition-delay:.35s}.route .pin:nth-of-type(3){transition-delay:.8s}.route .pin:nth-of-type(4){transition-delay:1.3s}
 .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem}
 .skills h3{font-size:1.1rem;margin-bottom:.6rem}
 .skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
 .skills li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.25rem .8rem;font-size:.95rem}
 .contact p{max-width:34rem;color:var(--muted);margin:0 0 1.25rem}
 footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
-@media (max-width:760px){.hero{grid-template-columns:1fr;gap:2rem}}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:2rem}.projects{grid-template-columns:1fr}.m{grid-template-columns:7rem 1fr 2.8rem}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -93,15 +120,14 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
   </div>
 </header>
 <div class="wrap">
-
   <main>
   <div class="hero">
     <div>
-      <h1>Computer Vision, ML Data &amp; GenAI</h1>
-      <p>I validate datasets, test ML pipelines, and work with segmentation and detection models so the data behind a model is accurate, consistent, and ready to train on. I also build GenAI apps and ship them as live demos.</p>
+      <h1>Computer Vision, 3D Reconstruction &amp; GenAI</h1>
+      <p>I train and validate SAM2 and YOLOv8 models, build 3D reconstruction pipelines, and make sure the data behind a model is accurate and ready to train on. Outside work I build LLM apps with evaluation and reliability built in, and ship them as live demos.</p>
       <div class="btns">
         <a class="btn fill" href="mailto:shashikirangoud.ayili@gmail.com">Email me</a>
-        <a class="btn" href="Ayili Shashikiran Goud ML Engineer.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
         <a class="btn" href="https://www.linkedin.com/in/ayili" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
       </div>
     </div>
@@ -138,10 +164,17 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
     </figure>
   </div>
 
+  <div class="stats">
+    <div style="--c:var(--m1)"><b>~3 years</b><span>in computer vision data and ML testing</span></div>
+    <div style="--c:var(--m2)"><b>5,000+</b><span>images validated in Roboflow, 2 to 20 classes</span></div>
+    <div style="--c:var(--m3)"><b>75% → 100%</b><span>emergency recall on my 29-case test set</span></div>
+    <div style="--c:var(--m4)"><b>2 live apps</b><span>RAG chatbot and AI travel planner</span></div>
+  </div>
+
   <section id="about" class="about">
     <h2>About</h2>
-    <p>I work on the data side of Computer Vision. At Track3D I collect and validate image and video datasets, train and validate models, and check pipelines and new deployments so problems are found before they reach training.</p>
-    <p>Outside work I build Generative AI applications, including a health assistant and a travel planner, and deploy them as live Streamlit apps. I like clear guidelines, careful checks, and tracing an error back to where it started. I am looking for GenAI and AI-related jobs where I can build and ship AI applications.</p>
+    <p>I work at the intersection of computer vision, data quality and LLM applications. At Track3D I train SAM2 models that mask construction-site categories and stages, which supports change detection between site captures. A big part of my work is bad-case analysis: finding why a model fails, fixing the labels or data, and checking that the result improved.</p>
+    <p>Outside work I build LLM apps with evaluation and reliability in mind, and deploy them on Streamlit. I am looking for ML Engineer, Computer Vision or Generative AI roles in Hyderabad, and I am open to remote.</p>
   </section>
 
   <section id="experience">
@@ -150,12 +183,13 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
       <h3>Machine Learning Support Engineer</h3>
       <div class="meta">Track3D (formerly ConstructN) · Hyderabad, India · January 2024 to present</div>
       <ul>
-        <li>Worked as an internal lead for one year, taking ownership of data quality checks and communicating issues to ML developers.</li>
-        <li>Validated image and video datasets for accuracy, consistency, and completeness before model training and testing.</li>
-        <li>Trained and validated SAM2 segmentation models for construction-site categories and stages.</li>
-        <li>Prepared datasets, trained and validated YOLOv8 models, and integrated model weights.</li>
-        <li>Tested ML pipelines and new deployments, found data and processing issues, and verified output quality.</li>
-        <li>Managed datasets, model outputs, and trained weights in AWS S3.</li>
+        <li>Trained and validated SAM2 segmentation models that generate masks for construction-site categories and stages from reality-capture imagery, supporting delta progress change detection between site captures.</li>
+        <li>Built and ran 3D reconstruction pipelines with OpenDroneMap, NeRF Studio and Gaussian Splatting on standard and fisheye imagery, and visualized the outputs in Potree.</li>
+        <li>Collected, annotated and validated image datasets in Roboflow (5,000+ images across projects with 2 to 20 classes) for detection and segmentation training.</li>
+        <li>Trained and validated YOLOv8 models on datasets of 200 to 1,200 images and integrated selected weights into the detection workflow.</li>
+        <li>Reviewed bad cases and corrected mislabeled and missing annotations, which reduced detection errors in later training runs.</li>
+        <li>Tested ML pipelines and new deployments, investigated data and processing issues, and verified outputs against expected results.</li>
+        <li>Worked with ML developers on end-to-end computer vision workflows and managed datasets, model outputs and trained weights in AWS S3.</li>
       </ul>
     </div>
   </section>
@@ -163,10 +197,12 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
   <section id="work">
     <h2>What I work on</h2>
     <div class="work">
-      <article style="--c:var(--m1)"><h3>Segmentation with SAM2</h3><p>Training and validating models for construction-site categories and stages, and using results to improve the dataset.</p></article>
-      <article style="--c:var(--m2)"><h3>Detection with YOLOv8</h3><p>Dataset preparation, model training, validation, and weight integration for Computer Vision workflows.</p></article>
-      <article style="--c:var(--m3)"><h3>Pipeline and deployment testing</h3><p>Checking new deployments and ML pipelines for data and processing issues, and confirming outputs are correct.</p></article>
-      <article style="--c:var(--m4)"><h3>Dataset validation and annotation QA</h3><p>Reviewing data for accuracy, consistency, and completeness so models train on clean inputs.</p></article>
+      <article style="--c:var(--m1)"><h3>Segmentation with SAM2</h3><p>Masks for construction-site categories and stages, with error analysis used to improve the dataset.</p></article>
+      <article style="--c:var(--m2)"><h3>Detection with YOLOv8</h3><p>Dataset preparation, training, validation and weight integration into the detection workflow.</p></article>
+      <article style="--c:var(--m3)"><h3>3D reconstruction</h3><p>OpenDroneMap, NeRF Studio and Gaussian Splatting pipelines, with outputs viewed in Potree.</p></article>
+      <article style="--c:var(--m4)"><h3>Dataset validation and QA</h3><p>Accuracy, consistency and completeness checks in Roboflow so models train on clean labels.</p></article>
+      <article style="--c:var(--m1)"><h3>Pipeline and deployment testing</h3><p>Finding data and processing issues in new deployments and confirming outputs are correct.</p></article>
+      <article style="--c:var(--m2)"><h3>LLM evaluation</h3><p>Test sets, recall and precision, retrieval Hit@k and regression checks for LLM apps.</p></article>
     </div>
   </section>
 
@@ -175,8 +211,18 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
     <div class="projects">
       <article style="--c:var(--m1)">
         <h3>Symptom Sense</h3>
-        <p>A GenAI health assistant that helps people make sense of their symptoms through a simple chat interface. Try it live.</p>
-        <ul class="tech" aria-label="Technologies"><li>Generative AI</li><li>LLM</li><li>Streamlit</li><li>Python</li></ul>
+        <p>A RAG health information chatbot that answers from WHO and MedlinePlus summaries, cites its sources and refuses unsafe requests.</p>
+        <div class="viz" role="img" aria-label="Evaluation results improved from 75 to 100 percent recall, 82 to 100 percent precision and 75 to 100 percent dose refusal">
+          <div class="m" style="--from:75%;--to:100%"><span>Emergency recall</span><div class="bar"><i></i></div><div class="num"><span class="from">75%</span><span class="to">100%</span></div></div>
+          <div class="m" style="--from:82%;--to:100%"><span>Precision</span><div class="bar"><i></i></div><div class="num"><span class="from">82%</span><span class="to">100%</span></div></div>
+          <div class="m" style="--from:75%;--to:100%"><span>Dose refusal</span><div class="bar"><i></i></div><div class="num"><span class="from">75%</span><span class="to">100%</span></div></div>
+          <small>Hover to see before and after on my 29-case emergency set.</small>
+        </div>
+        <ul class="pts">
+          <li>TF-IDF and cosine retrieval over 10 topic files, sending the top 3 chunks and last 10 messages to the LLM.</li>
+          <li>Three-suite evaluation harness: emergency detection, retrieval Hit@k and model behavior.</li>
+        </ul>
+        <ul class="tech" aria-label="Technologies"><li>RAG</li><li>gpt-oss-120b</li><li>Groq API</li><li>scikit-learn</li><li>Streamlit</li><li>Python</li></ul>
         <div class="btns">
           <a class="btn fill" href="https://symptom-sense.streamlit.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
           <a class="btn" href="https://github.com/Shashikirangoud/health-assistant" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -184,8 +230,21 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
       </article>
       <article style="--c:var(--m3)">
         <h3>Travo</h3>
-        <p>A GenAI travel assistant that helps plan trips from a user's prompt. Try it live.</p>
-        <ul class="tech" aria-label="Technologies"><li>Generative AI</li><li>LLM</li><li>Streamlit</li><li>Python</li></ul>
+        <p>An AI travel planner that returns schema-validated JSON for transport legs, places, stops, itinerary and stays, with day-aware planning for six transport modes.</p>
+        <div class="viz">
+          <svg class="route" viewBox="0 0 320 110" role="img" aria-label="Animated route between three numbered stops on a map">
+            <path class="path" d="M30 80 C80 20 120 20 150 55 S240 100 290 30"/>
+            <path class="draw" d="M30 80 C80 20 120 20 150 55 S240 100 290 30"/>
+            <circle class="pin" cx="30" cy="80" r="11"/><circle class="pin" cx="150" cy="55" r="11"/><circle class="pin" cx="290" cy="30" r="11"/>
+            <text x="30" y="84">1</text><text x="150" y="59">2</text><text x="290" y="34">3</text>
+            <text class="rt" x="8" y="104">Hover to draw the OSRM road route</text>
+          </svg>
+        </div>
+        <ul class="pts">
+          <li>Reliability layer: drops invalid coordinates, retries malformed JSON once, falls back to another model and handles rate limits.</li>
+          <li>One-hour result cache for the free-tier quota, a follow-up chatbot, and a Leaflet map with a rotating 3D globe.</li>
+        </ul>
+        <ul class="tech" aria-label="Technologies"><li>JSON mode</li><li>Groq API</li><li>Leaflet</li><li>OSRM</li><li>Three.js</li><li>fpdf2</li><li>Streamlit</li></ul>
         <div class="btns">
           <a class="btn fill" href="https://travo-beta.streamlit.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
           <a class="btn" href="https://github.com/Shashikirangoud/Travo" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -197,10 +256,12 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
   <section id="skills">
     <h2>Skills</h2>
     <div class="skills">
-      <div><h3>Data quality</h3><ul><li>Dataset validation</li><li>Annotation QA</li><li>Data cleaning</li><li>Root cause investigation</li></ul></div>
-      <div><h3>Computer Vision</h3><ul><li>Image segmentation</li><li>Object detection</li><li>YOLOv8</li><li>SAM2</li><li>Model validation</li></ul></div>
-      <div><h3>ML operations</h3><ul><li>ML pipeline testing</li><li>Deployment testing</li><li>AWS S3</li><li>Data tagging</li></ul></div>
-      <div><h3>Generative AI</h3><ul><li>LLM applications</li><li>Prompt engineering</li><li>GenAI app development</li><li>Streamlit</li><li>Python</li><li>Git and GitHub</li></ul></div>
+      <div><h3>Computer Vision</h3><ul><li>YOLOv8</li><li>SAM2</li><li>Object detection</li><li>Image segmentation</li><li>Change detection</li><li>Model validation</li></ul></div>
+      <div><h3>3D reconstruction</h3><ul><li>OpenDroneMap</li><li>NeRF Studio</li><li>Gaussian Splatting</li><li>Photogrammetry</li><li>Potree</li></ul></div>
+      <div><h3>Data quality</h3><ul><li>Dataset validation</li><li>Annotation QA</li><li>Roboflow</li><li>Bad-case analysis</li><li>Data cleaning</li></ul></div>
+      <div><h3>Generative AI</h3><ul><li>RAG</li><li>Prompt engineering</li><li>Structured JSON output</li><li>Guardrails</li><li>LLM evaluation</li><li>Groq API</li></ul></div>
+      <div><h3>Engineering</h3><ul><li>Python</li><li>Streamlit</li><li>REST APIs</li><li>scikit-learn</li><li>Linux</li><li>Jupyter</li></ul></div>
+      <div><h3>ML operations</h3><ul><li>ML pipeline testing</li><li>Deployment testing</li><li>AWS S3</li><li>Git and GitHub</li></ul></div>
     </div>
   </section>
 
@@ -211,12 +272,12 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px sol
 
   <section id="contact" class="contact">
     <h2>Contact</h2>
-    <p>Hiring for GenAI or AI-related roles? Send me a message.</p>
+    <p>Hiring for ML Engineer, Computer Vision or GenAI roles? Send me a message.</p>
     <div class="btns">
       <a class="btn fill" href="mailto:shashikirangoud.ayili@gmail.com">shashikirangoud.ayili@gmail.com</a>
       <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-      <a class="btn" href="Linkedin" target="_blank" rel="noopener noreferrer">linkedin.com/in/ayili</a>
-      <a class="btn" href="Github" target="_blank" rel="noopener noreferrer">github.com/Shashikirangoud</a>
+      <a class="btn" href="https://www.linkedin.com/in/ayili" target="_blank" rel="noopener noreferrer">linkedin.com/in/ayili</a>
+      <a class="btn" href="https://github.com/Shashikirangoud" target="_blank" rel="noopener noreferrer">github.com/Shashikirangoud</a>
     </div>
   </section>
   </main>
